@@ -94,4 +94,31 @@ check('skills', 'Skills is required')
     }
     );
 
+    router.get('/', async (req, res) => {
+        try {
+            const profiles = await Profile.find().populate('user', ['name', 'avator']);
+            res.json(profiles);
+        } catch (error) {
+            console.error(err.message);
+            res.status(500).send('Send Error');
+        }
+    });
+
+
+    router.get('/user/:user_id', async (req, res) => {
+        try {
+            const profile = await Profile.findOne({ user: req.params.user_id}).populate('user', ['name', 'avator']);
+            
+            if(!profile) return res.status(400).json({ msg: 'Profile not found'})
+            
+            res.json(profiles);
+        } catch (error) {
+            console.error(err.message);
+            if(err.kind == 'ObjectId') {
+                return res.status(400).json({ msg: 'Profile not found'})
+            }
+            res.status(500).send('Send Error');
+        }
+    });
+
 module.exports = router;
