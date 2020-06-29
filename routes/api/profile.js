@@ -121,4 +121,18 @@ check('skills', 'Skills is required')
         }
     });
 
+    router.delete('/', auth, async (req, res) => {
+        try {
+            await Profile.findOneAndRemove({ user: req.user.id})
+
+            await User.findByIdAndRemove({ _id: req.user.id})
+            
+            res.json({ msg: 'User deleted'})
+        } catch (error) {
+            console.error(err.message);
+            res.status(500).send('Send Error');
+        }
+    });
+
+
 module.exports = router;
