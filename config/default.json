@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://Tim123:Monkey123@cluster0-mu1px.mongodb.net/Def_finder?retryWrites=true&w=majority",
-    "jwtSecret": "mysecret"
+    "jwtSecret": "mysecret",
+    "githubClientId": "68be02f90a691e8f16e9",
+    "githubSecret": "42493d577bd01dbacbbf9e4bb876f0ce41fd81e3"
 }
