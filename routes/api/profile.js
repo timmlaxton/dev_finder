@@ -36,7 +36,7 @@ check('skills', 'Skills is required')
 ]
 ],
  async (req, res) => {
-     const erors = validationResult(req);
+     const errors = validationResult(req);
      if(!errors.isEmpty()) {
          return res.status(400).json({ errors: errors.array() });
      }
@@ -62,7 +62,7 @@ check('skills', 'Skills is required')
      if(location) profileFields.location = location;
      if(bio) profileFields.bio = bio;
      if(status) profileFields.status = status;
-     if(githubeusername) profileFields.githubusername = githubusername;
+     if(githubusername) profileFields.githubusername = githubusername;
      if(skills) {
          profileFields.skills = skills.split(', ').map(skill => skill.trim());
      }
