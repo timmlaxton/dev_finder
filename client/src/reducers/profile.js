@@ -1,4 +1,4 @@
-const { GET_PROFILE, PROFILE_ERROR } = require("../actions/types");
+const { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } = require("../actions/types");
 
 const initialState = {
     profile: null,
@@ -24,6 +24,13 @@ export default function(state = initialState, action) {
                    error: payload,
                    loading: false
                };
+            case CLEAR_PROFILE:
+                return {
+                    ...state,
+                    profile: null,
+                    repos: [],
+                    loading: false
+                }
                default: 
                return state;
     }
