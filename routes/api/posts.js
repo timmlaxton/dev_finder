@@ -163,7 +163,7 @@ async (req, res) => {
             user: req.user.id
         };
 
-        post.commnets.unshift(newComment)
+        post.comments.unshift(newComment)
 
         await post.save();
 
