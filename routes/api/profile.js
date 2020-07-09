@@ -8,6 +8,7 @@ const { check, validationResult} = require('express-validator/check')
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Posts = require('../../models/Posts');
 
 
 router.get('/me', auth, async (req, res) => {
@@ -126,8 +127,12 @@ check('skills', 'Skills is required')
         }
     });
 
+   
+
     router.delete('/', auth, async (req, res) => {
         try {
+
+            await Post.deleteMany({ user: req.user.id});
             await Profile.findOneAndRemove({ user: req.user.id})
 
             await User.findByIdAndRemove({ _id: req.user.id})
