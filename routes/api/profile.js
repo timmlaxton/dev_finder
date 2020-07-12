@@ -117,7 +117,7 @@ check('skills', 'Skills is required')
             
             if(!profile) return res.status(400).json({ msg: 'Profile not found'})
             
-            res.json(profiles);
+            res.json(profile);
         } catch (error) {
             if(err.kind == 'ObjectId') {
                 return res.status(400).json({ msg: 'Profile not found'})
