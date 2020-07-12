@@ -102,7 +102,7 @@ check('skills', 'Skills is required')
 
     router.get('/', async (req, res) => {
         try {
-            const profiles = await Profile.find().populate('user', ['name', 'avator']);
+            const profiles = await Profile.find().populate('user', ['name', 'avatar']);
             res.json(profiles);
         } catch (error) {
             console.error(err.message);
@@ -113,7 +113,7 @@ check('skills', 'Skills is required')
 
     router.get('/user/:user_id', async (req, res) => {
         try {
-            const profile = await Profile.findOne({ user: req.params.user_id}).populate('user', ['name', 'avator']);
+            const profile = await Profile.findOne({ user: req.params.user_id}).populate('user', ['name', 'avatar']);
             
             if(!profile) return res.status(400).json({ msg: 'Profile not found'})
             

@@ -48,8 +48,6 @@ export const getProfiles = () => async dispatch => {
 }
 
 export const getProfileById = userId => async dispatch => {
-    
-
     try {
       const res = await axios.get(`api/profile/${userId}`);
       
@@ -66,9 +64,7 @@ export const getProfileById = userId => async dispatch => {
 }
 
 export const getGithubRepos = username => async dispatch => {
-    
-
-    try {
+     try {
       const res = await axios.get(`api/profile/github/${username}`);
       
       dispatch({
